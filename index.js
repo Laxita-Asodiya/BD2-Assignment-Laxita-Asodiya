@@ -214,17 +214,10 @@ let hotels = [
 
 //function to show in order whatever property name is given in url
 function showInOrder(Data, ShowType, propertyName) {
-  if (ShowType === 'low-to-high' || 'least-to-most') {
-    let result = Data.sort((a, b) =>
-      a[propertyName] > b[propertyName] ? 1 : -1
-    );
-    // console.log(result);
-    return result;
-  } else if (ShowType === 'high-to-low' || 'most-to-least') {
-    let result = Data.sort((a, b) =>
-      a[propertyName] < b[propertyName] ? 1 : -1
-    );
-    return result;
+  if (ShowType === 'low-to-high' || ShowType === 'least-to-most') {
+    return Data.sort((a, b) => (a[propertyName] > b[propertyName] ? 1 : -1));
+  } else if (ShowType === 'high-to-low' || ShowType === 'most-to-least') {
+    return Data.sort((a, b) => (a[propertyName] < b[propertyName] ? 1 : -1));
   } else {
     return 'invalid request';
   }
@@ -235,8 +228,6 @@ function showSortedData(Data, propertyValue, propertyName) {
   console.log(propertyValue, propertyName);
 
   Data.forEach((element) => {
-    // console.log(element);
-    // console.log(element[propertyName]);
     if (element[propertyName].toLowerCase() === propertyValue.toLowerCase()) {
       result.push(element);
     }
